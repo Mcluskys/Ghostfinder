@@ -1,0 +1,53 @@
+:root {
+  color-scheme: dark;
+  --bg:#110d1c; --panel:#1b1530; --panel-2:#241b3d;
+  --text:#fffaf2; --muted:#cbbfd8; --accent:#ffd768;
+  --border:rgba(255,255,255,.12); --shadow:0 8px 20px rgba(0,0,0,.24);
+}
+*{box-sizing:border-box}
+html,body{margin:0;width:100%;height:100%;overflow:hidden;background:var(--bg);-webkit-text-size-adjust:100%}
+body{font-family:Inter,ui-rounded,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:var(--text);background:radial-gradient(circle at 20% 0%,rgba(158,124,255,.18),transparent 30rem),radial-gradient(circle at 90% 10%,rgba(255,215,104,.10),transparent 28rem),var(--bg)}
+button,select{font:inherit;touch-action:manipulation} button{border:0;cursor:pointer}
+
+.app{
+  position:relative;
+  width:100%;
+  height:100vh;
+  height:100svh;
+  max-height:100vh;
+  padding:max(8px,env(safe-area-inset-top)) max(8px,env(safe-area-inset-right)) max(8px,env(safe-area-inset-bottom)) max(8px,env(safe-area-inset-left));
+  display:grid;
+  grid-template-rows:auto auto auto minmax(0,1fr);
+  gap:5px;
+  overflow:hidden;
+}
+.hero{display:flex;align-items:center;justify-content:space-between;gap:12px;min-width:0}
+.hero>div:first-child{min-width:0}.eyebrow{margin:0 0 2px;color:var(--accent);font-size:.66rem;font-weight:800;text-transform:uppercase;letter-spacing:.09em}
+h1{margin:0;font-size:clamp(1.2rem,3.2vw,2rem);line-height:1;white-space:nowrap}.intro{margin:3px 0 0;color:var(--muted);font-size:.78rem;line-height:1.1}
+.controls{display:grid;grid-template-columns:1fr;gap:4px;width:180px;flex:0 0 180px}.controls label{display:none}.controls select,.controls button,.win-panel button{min-height:34px;border-radius:10px}.controls select{width:100%;padding:0 28px 0 9px;color:var(--text);background:var(--panel-2);border:1px solid var(--border);font-size:.75rem}.controls button,.win-panel button{padding:0 11px;background:var(--accent);color:#241b10;font-weight:900;font-size:.76rem}
+.statusbar{display:grid;grid-template-columns:repeat(3,1fr);gap:5px}.statusbar>div{display:flex;align-items:baseline;justify-content:center;gap:5px;min-width:0;padding:5px 7px;border:1px solid var(--border);border-radius:10px;background:rgba(36,27,61,.72)}.statusbar .label{color:var(--muted);font-size:.64rem;font-weight:700}.statusbar strong{font-size:.82rem}
+.message{min-height:14px;margin:0;color:var(--muted);text-align:center;font-size:.69rem;line-height:1}
+.board{--cols:4;--rows:4;display:grid;grid-template-columns:repeat(var(--cols),minmax(0,1fr));grid-template-rows:repeat(var(--rows),minmax(0,1fr));gap:clamp(4px,.8vw,9px);width:100%;height:100%;min-height:0;min-width:0;overflow:hidden;margin:0 auto}
+.card{position:relative;min-width:0;min-height:0;padding:0;border-radius:clamp(7px,1vw,14px);background:transparent;perspective:900px;-webkit-tap-highlight-color:transparent;overflow:hidden}.card:focus-visible{outline:3px solid var(--accent);outline-offset:-3px}.card-inner{position:absolute;inset:0;border-radius:inherit;transform-style:preserve-3d;transition:transform .3s ease;box-shadow:var(--shadow)}.card.flipped .card-inner,.card.matched .card-inner{transform:rotateY(180deg)}
+.card-face{position:absolute;inset:0;display:grid;place-items:center;overflow:hidden;border-radius:inherit;border:1px solid var(--border);backface-visibility:hidden;-webkit-backface-visibility:hidden}.card-back{background:radial-gradient(circle at 50% 35%,rgba(255,255,255,.08),transparent 20%),linear-gradient(145deg,#2a1f48,#181126)}.card-back::before{content:"?";display:grid;place-items:center;width:min(48%,42px);aspect-ratio:1;border-radius:50%;color:var(--accent);border:2px solid rgba(255,215,104,.5);font-size:clamp(1rem,4vmin,2.2rem);font-weight:900}.card-front{transform:rotateY(180deg);background:radial-gradient(circle at 50% 38%,rgba(255,255,255,.13),transparent 35%),linear-gradient(160deg,#342653,#201732)}.ghost{transform:translateY(-2%);font-size:clamp(1.25rem,7vmin,3.8rem);line-height:1;filter:drop-shadow(0 5px 7px rgba(0,0,0,.25))}.card.matched .card-face{border-color:rgba(124,231,170,.75)}
+.win-panel{position:absolute;left:50%;bottom:max(12px,env(safe-area-inset-bottom));transform:translateX(-50%);z-index:10;width:min(calc(100% - 24px),520px);padding:10px 12px;text-align:center;background:rgba(27,21,48,.97);border:1px solid var(--border);border-radius:14px;box-shadow:0 10px 30px rgba(0,0,0,.45)}.win-panel[hidden]{display:none}.win-panel h2{display:inline;margin:0 5px;font-size:1rem}.win-panel p{display:inline;margin:0 7px 0 0;color:var(--muted);font-size:.76rem}.win-panel button{display:inline-block;min-height:32px}.win-ghost{display:inline;font-size:1.15rem}
+
+/* Sur PC/tablette paysage : informations à gauche, plateau sur toute la hauteur. */
+@media (min-width:800px) and (min-height:520px){
+  .app{grid-template-columns:240px minmax(0,1fr);grid-template-rows:auto auto 1fr;column-gap:10px;row-gap:7px;padding:10px}
+  .hero{grid-column:1;grid-row:1;display:block}.eyebrow{font-size:.65rem}h1{font-size:1.45rem;white-space:normal}.intro{font-size:.72rem;margin-top:5px}.controls{width:100%;margin-top:10px;display:grid;grid-template-columns:1fr;gap:5px}.controls select,.controls button{min-height:36px}
+  .statusbar{grid-column:1;grid-row:2;grid-template-columns:1fr;gap:5px}.statusbar>div{justify-content:space-between;padding:7px 9px}.statusbar .label{font-size:.68rem}.statusbar strong{font-size:.9rem}
+  .message{grid-column:1;grid-row:3;align-self:start;text-align:left;font-size:.72rem;line-height:1.25;padding:4px 2px}
+  .board{grid-column:2;grid-row:1/4;max-width:none;max-height:none}
+  .ghost{font-size:clamp(1.6rem,7vmin,4.3rem)}
+}
+
+@media (max-width:799px){
+  .app{width:100%;gap:4px}.eyebrow,.intro{display:none}h1{font-size:clamp(1rem,5vw,1.35rem);white-space:normal}.controls{width:145px;flex-basis:145px}.controls select,.controls button{min-height:31px;font-size:.7rem}.statusbar>div{padding:3px 5px}.statusbar .label{font-size:.58rem}.statusbar strong{font-size:.75rem}.message{font-size:.64rem;min-height:12px}.board{gap:4px}.ghost{font-size:clamp(1.15rem,9vmin,2.8rem)}
+}
+
+@media (max-height:500px){
+  .intro,.eyebrow,.message{display:none}.app{grid-template-rows:auto auto minmax(0,1fr);gap:3px}.controls{display:flex;width:auto;flex-basis:auto}.controls select{width:145px}.controls select,.controls button{min-height:29px}.statusbar>div{padding:2px 5px}
+}
+
+@media (prefers-reduced-motion:reduce){.card-inner{transition:none}}

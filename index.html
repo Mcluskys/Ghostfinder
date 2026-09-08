@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#171126">
+  <meta name="description" content="Memory des Fantômes — un petit jeu responsive jouable sur smartphone, tablette et PC.">
+  <title>Memory des Fantômes 👻</title>
+  <link rel="stylesheet" href="style.css?v=3">
+</head>
+<body>
+  <main class="app" id="app">
+    <section class="hero" aria-labelledby="game-title">
+      <div>
+        <p class="eyebrow">Petit jeu de mémoire</p>
+        <h1 id="game-title">Memory des Fantômes 👻</h1>
+        <p class="intro">Retrouve toutes les paires de fantômes en faisant le moins de coups possible.</p>
+      </div>
+
+      <div class="controls">
+        <label for="difficulty">Niveau</label>
+        <select id="difficulty" aria-label="Choisir le niveau">
+          <option value="easy">Facile · 6 paires</option>
+          <option value="medium" selected>Moyen · 8 paires</option>
+          <option value="hard">Difficile · 10 paires</option>
+        </select>
+        <button id="restartBtn" type="button">Nouvelle partie</button>
+      </div>
+    </section>
+
+    <section class="statusbar" aria-label="Informations de la partie">
+      <div><span class="label">Coups</span><strong id="moves">0</strong></div>
+      <div><span class="label">Paires</span><strong><span id="pairs">0</span>/<span id="pairTotal">8</span></strong></div>
+      <div><span class="label">Temps</span><strong id="time">00:00</strong></div>
+    </section>
+
+    <p id="message" class="message" aria-live="polite">Clique ou touche une carte pour commencer.</p>
+
+    <section id="board" class="board" aria-label="Plateau du Memory"></section>
+
+    <section id="winPanel" class="win-panel" hidden aria-live="polite">
+      <div class="win-ghost" aria-hidden="true">👻</div>
+      <h2>Bravo !</h2>
+      <p id="winText">Tu as retrouvé tous les fantômes.</p>
+      <button id="playAgainBtn" type="button">Rejouer</button>
+    </section>
+  </main>
+
+  <script src="game.js?v=3"></script>
+</body>
+</html>
