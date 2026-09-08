@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no" />
+  <meta name="theme-color" content="#050505" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <title>Chasse aux Fantômes 👻</title>
+  <link rel="preload" href="assets/images/fond.webp" as="image" />
+  <link rel="preload" href="assets/images/ghost.webp" as="image" />
+  <link rel="preload" href="assets/images/lampe.webp" as="image" />
+  <link rel="preload" href="assets/fonts/crow.ttf" as="font" type="font/ttf" crossorigin />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main id="app" aria-label="Jeu Chasse aux Fantômes">
+    <div id="orientationHint" aria-live="polite">Pour un meilleur confort sur smartphone, passez en paysage.</div>
+    <canvas id="game" width="900" height="600" aria-label="Zone de jeu"></canvas>
+  </main>
+  <script src="game.js" defer></script>
+</body>
+</html>
